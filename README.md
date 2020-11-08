@@ -1,10 +1,10 @@
 # QT
 QT（C++）开发小众日记app项目
 # 环境
-QT creator 5.5.0
-win10
-C++11以上（lambda表达式）
-mingw（qt creator有的版本自带）
+1. QT creator 5.5.0
+2. win10
+3. C++11以上（lambda表达式）
+4. mingw（qt creator有的版本自带）
 # 注意事项
 1. 利用qt creator打开Layout.pro进行开发即可。
 2. images 文件存储了用到的图片文件。
