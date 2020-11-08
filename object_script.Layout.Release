@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\userwindow.o
+./release\editwindow.o
+./release\diarylog.o
+./release\qrc_res.o
+./release\moc_mainwindow.o
+./release\moc_userwindow.o
+./release\moc_editwindow.o
+./release\moc_diarylog.o
+);

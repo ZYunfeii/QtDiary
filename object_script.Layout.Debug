@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\userwindow.o
+./debug\editwindow.o
+./debug\diarylog.o
+./debug\qrc_res.o
+./debug\moc_mainwindow.o
+./debug\moc_userwindow.o
+./debug\moc_editwindow.o
+./debug\moc_diarylog.o
+);
