@@ -5,6 +5,7 @@ QT（C++）开发小众日记app项目
 2. win10
 3. C++11以上（lambda表达式）
 4. mingw（qt creator有的版本自带）
+# 测试账号：1 密码：1
 # 注意事项
 1. 利用qt creator打开Layout.pro进行开发即可。
 2. images 文件存储了用到的图片文件。
