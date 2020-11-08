@@ -11,3 +11,8 @@ QT（C++）开发小众日记app项目
 3. app采用SQLite数据库进行数据管理。
 4. 项目基本功能已经实现，仍在开发阶段。
 5. 该项目可作为C++练手项目。
+
+# 效果图
+![Alt text](/IMG/1.png)
+![Alt text](/IMG/2.png)
+![Alt text](/IMG/3.png)
