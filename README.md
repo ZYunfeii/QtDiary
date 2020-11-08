@@ -14,7 +14,7 @@ QT（C++）开发小众日记app项目
 
 # 效果图
 ![Alt text](/IMG/1.png)
-![Alt text](/IMG/2.png)
+![Alt text](/IMG/4.png)
 ![Alt text](/IMG/3.png)
 
 
