@@ -10,6 +10,9 @@ EditWindow::EditWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //光标自动定位到文本编辑栏
+    ui->textEdit->setFocus();
+
     //初始化字体
     font = (ui->fontComboBox->currentFont());
     font.setPointSize(ui->comboBox->currentText().toInt());
@@ -48,10 +51,20 @@ void EditWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(0,0,this->width(),this->height(),pix);
 }
 
+void EditWindow::keyPressEvent(QKeyEvent * event)
+{
+	switch (event->key())
+	{
+	case Qt::Key_Return:                          //回车按下激活保存按钮
+		emit ui->saveButton->clicked();
+		break;
+	}
+}
+
 EditWindow::~EditWindow()
 {
-    qDebug()<<"editWindow被析构";
     delete ui;
 }
+
 
 

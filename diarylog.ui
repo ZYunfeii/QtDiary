@@ -30,39 +30,14 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>20</y>
-     <width>270</width>
-     <height>130</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>270</width>
-     <height>130</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>270</width>
-     <height>130</height>
-    </size>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="res.qrc">:/images/IMG_8.png</pixmap>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QLabel" name="timeLabel">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>0</y>
+     <x>110</x>
+     <y>10</y>
      <width>161</width>
      <height>21</height>
     </rect>
@@ -91,21 +66,21 @@
   <widget class="QTextBrowser" name="textBrowser">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>30</y>
-     <width>191</width>
+     <x>90</x>
+     <y>40</y>
+     <width>205</width>
      <height>81</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>191</width>
+     <width>205</width>
      <height>81</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>191</width>
+     <width>205</width>
      <height>81</height>
     </size>
    </property>
@@ -115,17 +90,23 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(18, 189, 124);</string>
+    <string notr="true"/>
    </property>
    <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>4</number>
    </property>
   </widget>
   <widget class="QPushButton" name="deleteButton">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>60</y>
+     <x>310</x>
+     <y>50</y>
      <width>30</width>
      <height>30</height>
     </rect>
@@ -146,7 +127,7 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/images/IMG_9.jpeg</normaloff>:/images/IMG_9.jpeg</iconset>
    </property>
    <property name="flat">
@@ -156,8 +137,8 @@
   <widget class="QLabel" name="portraitLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>80</y>
+     <x>20</x>
+     <y>50</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -178,9 +159,39 @@
     <string>TextLabel</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="detailButton">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>80</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/IMG_1.png</normaloff>:/images/IMG_1.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

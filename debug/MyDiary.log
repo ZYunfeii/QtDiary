@@ -1,0 +1,4 @@
+﻿  userwindow.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\editwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  MyDiary.vcxproj -> E:\FilesofPractice\QTpractice\SomeProjectsofMyself\MyDiary_vs\debug\MyDiary.exe

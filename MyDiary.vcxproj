@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{970D5DA5-C6F0-3499-81C6-24D67A202F0D}</ProjectGuid>
+    <RootNamespace>MyDiary</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>MyDiary</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>MyDiary</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MyDiary</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MyDiary</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;D:\software\QT\5.12.10\msvc2017_64\include;D:\software\QT\5.12.10\msvc2017_64\include\QtWidgets;D:\software\QT\5.12.10\msvc2017_64\include\QtGui;D:\software\QT\5.12.10\msvc2017_64\include\QtANGLE;D:\software\QT\5.12.10\msvc2017_64\include\QtSql;D:\software\QT\5.12.10\msvc2017_64\include\QtCore;release;.;/include;D:\software\QT\5.12.10\msvc2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Widgets.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Gui.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Sql.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Core.lib;D:\software\QT\5.12.10\msvc2017_64\lib\qtmain.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\MyDiary.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;D:\software\QT\5.12.10\msvc2017_64\include;D:\software\QT\5.12.10\msvc2017_64\include\QtWidgets;D:\software\QT\5.12.10\msvc2017_64\include\QtGui;D:\software\QT\5.12.10\msvc2017_64\include\QtANGLE;D:\software\QT\5.12.10\msvc2017_64\include\QtSql;D:\software\QT\5.12.10\msvc2017_64\include\QtCore;debug;.;/include;D:\software\QT\5.12.10\msvc2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Widgetsd.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Guid.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Sqld.lib;D:\software\QT\5.12.10\msvc2017_64\lib\Qt5Cored.lib;D:\software\QT\5.12.10\msvc2017_64\lib\qtmaind.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\MyDiary.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;QT_SQL_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="detailwindow.cpp" />
+    <ClCompile Include="diarylog.cpp" />
+    <ClCompile Include="editwindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="timelistwindow.cpp" />
+    <ClCompile Include="userwindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="detailwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">detailwindow.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore detailwindow.h -o release\moc_detailwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC detailwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_detailwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">detailwindow.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore detailwindow.h -o debug\moc_detailwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC detailwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_detailwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="diarylog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">diarylog.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore diarylog.h -o release\moc_diarylog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC diarylog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_diarylog.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">diarylog.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore diarylog.h -o debug\moc_diarylog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC diarylog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_diarylog.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="editwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">editwindow.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore editwindow.h -o release\moc_editwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC editwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_editwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">editwindow.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore editwindow.h -o debug\moc_editwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC editwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_editwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mainwindow.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore mainwindow.h -o release\moc_mainwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC mainwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_mainwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mainwindow.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC mainwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_mainwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="timelistwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">timelistwindow.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore timelistwindow.h -o release\moc_timelistwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC timelistwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_timelistwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">timelistwindow.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore timelistwindow.h -o debug\moc_timelistwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC timelistwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_timelistwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="userwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">userwindow.h;release\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore userwindow.h -o release\moc_userwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC userwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_userwindow.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">userwindow.h;debug\moc_predefs.h;D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/debug/moc_predefs.h -ID:/software/QT/5.12.10/msvc2017_64/mkspecs/win32-msvc -IF:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs -ID:/software/QT/5.12.10/msvc2017_64/include -ID:/software/QT/5.12.10/msvc2017_64/include/QtWidgets -ID:/software/QT/5.12.10/msvc2017_64/include/QtGui -ID:/software/QT/5.12.10/msvc2017_64/include/QtANGLE -ID:/software/QT/5.12.10/msvc2017_64/include/QtSql -ID:/software/QT/5.12.10/msvc2017_64/include/QtCore userwindow.h -o debug\moc_userwindow.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC userwindow.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_userwindow.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug\moc_detailwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_detailwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_diarylog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_diarylog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_editwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_editwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_mainwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_mainwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -BxD:\software\QT\5.12.10\msvc2017_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E D:\software\QT\5.12.10\msvc2017_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -BxD:\software\QT\5.12.10\msvc2017_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E D:\software\QT\5.12.10\msvc2017_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClCompile Include="debug\moc_timelistwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_timelistwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_userwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_userwindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_res.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_res.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="ui_detailwindow.h" />
+    <ClInclude Include="ui_diarylog.h" />
+    <ClInclude Include="ui_editwindow.h" />
+    <ClInclude Include="ui_mainwindow.h" />
+    <ClInclude Include="ui_timelistwindow.h" />
+    <ClInclude Include="ui_userwindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="detailwindow.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">detailwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe detailwindow.ui -o ui_detailwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC detailwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_detailwindow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">detailwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe detailwindow.ui -o ui_detailwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC detailwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_detailwindow.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="diarylog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">diarylog.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe diarylog.ui -o ui_diarylog.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC diarylog.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_diarylog.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">diarylog.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe diarylog.ui -o ui_diarylog.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC diarylog.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_diarylog.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="editwindow.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">editwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe editwindow.ui -o ui_editwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC editwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_editwindow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">editwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe editwindow.ui -o ui_editwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC editwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_editwindow.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mainwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe mainwindow.ui -o ui_mainwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC mainwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_mainwindow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mainwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe mainwindow.ui -o ui_mainwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC mainwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_mainwindow.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="timelistwindow.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">timelistwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe timelistwindow.ui -o ui_timelistwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC timelistwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_timelistwindow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">timelistwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe timelistwindow.ui -o ui_timelistwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC timelistwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_timelistwindow.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="userwindow.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">userwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe userwindow.ui -o ui_userwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC userwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_userwindow.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">userwindow.ui;D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\uic.exe userwindow.ui -o ui_userwindow.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC userwindow.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_userwindow.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\IMG_1.png" />
+    <None Include="images\IMG_10.png" />
+    <None Include="images\IMG_11.png" />
+    <None Include="images\IMG_12.png" />
+    <None Include="images\IMG_13.png" />
+    <None Include="images\IMG_14.png" />
+    <None Include="images\IMG_15.jpg" />
+    <None Include="images\IMG_16.png" />
+    <None Include="images\IMG_2.jpg" />
+    <None Include="images\IMG_3.jpeg" />
+    <None Include="images\IMG_4.jpg" />
+    <None Include="images\IMG_5.jpeg" />
+    <None Include="images\IMG_6.png" />
+    <None Include="images\IMG_7.gif" />
+    <None Include="images\IMG_8.png" />
+    <None Include="images\IMG_9.jpeg" />
+    <CustomBuild Include="res.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">res.qrc;D:\software\QT\5.12.10\msvc2017_64\bin\rcc.exe;images\IMG_7.gif;images\IMG_9.jpeg;images\IMG_4.jpg;images\IMG_6.png;images\IMG_12.png;images\IMG_5.jpeg;images\IMG_16.png;images\IMG_1.png;images\IMG_11.png;images\IMG_2.jpg;images\IMG_10.png;images\IMG_14.png;images\IMG_8.png;images\IMG_3.jpeg;images\IMG_15.jpg;images\IMG_13.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\rcc.exe -name res res.qrc -o release\qrc_res.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">RCC res.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\qrc_res.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">res.qrc;D:\software\QT\5.12.10\msvc2017_64\bin\rcc.exe;images\IMG_7.gif;images\IMG_9.jpeg;images\IMG_4.jpg;images\IMG_6.png;images\IMG_12.png;images\IMG_5.jpeg;images\IMG_16.png;images\IMG_1.png;images\IMG_11.png;images\IMG_2.jpg;images\IMG_10.png;images\IMG_14.png;images\IMG_8.png;images\IMG_3.jpeg;images\IMG_15.jpg;images\IMG_13.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\software\QT\5.12.10\msvc2017_64\bin\rcc.exe -name res res.qrc -o debug\qrc_res.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">RCC res.qrc</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\qrc_res.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\IMG_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="exe_ico.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

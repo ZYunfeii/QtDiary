@@ -4,9 +4,13 @@ INPUT(
 ./release\userwindow.o
 ./release\editwindow.o
 ./release\diarylog.o
+./release\detailwindow.o
+./release\timelistwindow.o
 ./release\qrc_res.o
 ./release\moc_mainwindow.o
 ./release\moc_userwindow.o
 ./release\moc_editwindow.o
 ./release\moc_diarylog.o
+./release\moc_detailwindow.o
+./release\moc_timelistwindow.o
 );

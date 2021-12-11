@@ -3,75 +3,108 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QPainter>
-
-
+#include <QKeyEvent>
+#include <QTimer>
+#include <QMovie>
+#include <fstream>
+#include <iostream>
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+	
+	// »ñµÃÍ·Ïñaddress
+	this->getImgAdd();
 
 
-    //lineEdit çš„ setTextæ˜¯è®¾ç½®æ–‡æœ¬ textæ˜¯è·å–æ–‡æœ¬
+    //ÉèÖÃ±³¾°gif
+    setGif();
 
-    usernameList<<"1"<<"å¼ äº‘é£"<<"Lily";
-    password<<"1"<<"YUNFEI"<<"Lilypass";
+    QMap<QString,QString> userMap;                 //¼ÇÂ¼ÓÃ»§ÃûºÍÃÜÂëµÄ
+    QMap<QString,UserWindow*> userWindowMap;       //×°ÔØÓÃ»§ÃûºÍÓÃ»§½çÃæµÄ
+
+    //lineEdit µÄ setTextÊÇÉèÖÃÎÄ±¾ textÊÇ»ñÈ¡ÎÄ±¾
+
+    userMap["1"] = "1";
+    userMap["ZYunfei"] = "YUNFEI";
+    userMap["NBY"] = "NBY";
 
 
-    for(int i = 0;i < usernameList.length(); ++i)
+    //µÇÂ¼Ãû Ä¬ÈÏÎªÕÅÔÆ·É
+    ui->lineEdit_username->setText("ZYunfei");
+    ui->lineEdit_password->setFocus();                     //ÉèÖÃ¹â±êÄ¬ÈÏ
+
+
+
+    for(int i = 0;i < userMap.size(); ++i)
     {
-        //åˆ›å»ºnä¸ªæ•°æ®åº“ï¼ˆn = usernameList.length()ï¼‰
+        //´´½¨n¸öÊı¾İ¿â£¨n = usernameList.length()£©
         QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE",QString("myDiary%1").arg(i));
         db.setDatabaseName(QString(".//qtDb%1.db").arg(i));
-        if( !db.open())  qDebug() << "æ— æ³•å»ºç«‹æ•°æ®åº“è¿æ¥";       //è¿™ä¸ªdb.openç›¸å½“å…³é”®å•Šï¼æ²¡è¿™ä¸€æ­¥åé¢å†™æ•°æ®å¯å¤±è´¥ã€‚
-        else qDebug()<<"æ•°æ®åº“è¿æ¥æˆåŠŸ";
+        if( !db.open())  qDebug() << "ÎŞ·¨½¨Á¢Êı¾İ¿âÁ¬½Ó";       //Õâ¸ödb.openÏàµ±¹Ø¼ü°¡£¡Ã»ÕâÒ»²½ºóÃæĞ´Êı¾İ¿ÉÊ§°Ü¡£
+        else qDebug()<<"Êı¾İ¿âÁ¬½Ó³É¹¦";
 
         QSqlQuery query(db);
         query.exec("create table person (time varchar, diary varchar,family varchar,pointSize varchar)");
         db.close();
     }
 
-
-    QVector<UserWindow*> userWindowVec;
-    for(int i = 0;i < usernameList.length(); ++i)
+    //³õÊ¼»¯µÇÂ¼ºóµÄÓÃ»§½çÃæ
+    QMap<QString,QString>::ConstIterator iteMap = userMap.begin();
+    for(iteMap = userMap.begin();iteMap != userMap.end();iteMap++)
     {
-        UserWindow * userWindow = new UserWindow(usernameList[i]);
-        userWindowVec.push_back(userWindow);
+        UserWindow * userWindow = new UserWindow(iteMap.key(),this);
+        userWindowMap[iteMap.key()] = userWindow;
     }
 
 
 
-    //å½“ç‚¹å‡»ç™»å½•æŒ‰é’®æ—¶åˆ¤æ–­passwordæ˜¯å¦æ­£ç¡®
+
+    //µ±µã»÷µÇÂ¼°´Å¥Ê±ÅĞ¶ÏpasswordÊÇ·ñÕıÈ·
     connect(ui->pushButton_login,&QPushButton::clicked,[=](){
-        int index;
         QString username = ui->lineEdit_username->text();
-        index = this->FindUsernameIndex(username,usernameList);
-        if(index != -1)
+        if(userMap[username] == "") QMessageBox::critical(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("µÇÂ¼ÕËºÅ²»´æÔÚ£¡"));
+        if(userMap[username] != "")
         {
-            if(ui->lineEdit_password->text()==password.at(index))
+            if(ui->lineEdit_password->text() == userMap[username])
             {
-                //åˆ›å»ºä¸»ç”¨æˆ·çª—å£ï¼ˆç™»å½•æˆåŠŸåçª—å£ï¼‰
-
+                //´´½¨Ö÷ÓÃ»§´°¿Ú£¨µÇÂ¼³É¹¦ºó´°¿Ú£©
                 this->hide();
-                userWindowVec[index]->show();
-
-                connect(userWindowVec[index],&UserWindow::ChooseBackSignal,[=](){
+                userWindowMap[username]->show();
+                connect(userWindowMap[username],&UserWindow::ChooseBackSignal,[=](){
                     this->show();
-                    userWindowVec[index]->close();
+					getImgAdd();
+					QPixmap tmpPix;
+					tmpPix.load(QString::fromStdString(userImg[username.toStdString()]));
+					ui->image_label->setPixmap(tmpPix);
+					userWindowMap[username]->close();
                 });
-            }else
-            {
-                QMessageBox::critical(this,"é”™è¯¯","ç™»å½•å¯†ç æœ‰è¯¯ï¼");
             }
-        }else
-        {
-            QMessageBox::critical(this,"é”™è¯¯","ç™»å½•è´¦å·ä¸å­˜åœ¨ï¼");
+            else QMessageBox::critical(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("µÇÂ¼ÃÜÂëÓĞÎó£¡"));
         }
     });
 
-    //å½“ç‚¹å‡»é€€å‡ºæŒ‰é’®æ—¶é€€å‡ºç™»å½•ç•Œé¢
-    connect(ui->pushButton_logout,&QPushButton::clicked,this,this->close);
+    //µ±µã»÷ÍË³ö°´Å¥Ê±ÍË³öµÇÂ¼½çÃæ
+    connect(ui->pushButton_logout,&QPushButton::clicked,[=](){this->close();});
+
+
+    //µÇÂ¼½çÃæÈËÎïÍ·ÏñÏÔÊ¾£¨ÀàËÆqq£©
+    QTimer * timer = new QTimer(this);
+    timer->start(200);
+    connect(timer,&QTimer::timeout,[=](){
+        QString userName = ui->lineEdit_username->text();
+        if(userMap.count(userName) != 0)
+        {
+            QPixmap tmpPix;
+            tmpPix.load(QString::fromStdString(userImg[userName.toStdString()]));
+            ui->image_label->setPixmap(tmpPix);
+
+        }
+        else ui->image_label->clear();
+    });
 
 }
 
@@ -80,22 +113,44 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-int MainWindow::FindUsernameIndex(QString str,QStringList usernameList)
+void MainWindow::setGif(void)
 {
-    for(int i = 0;i < usernameList.size();++i)
-    {
-        if(str == usernameList.at(i))
-        {
-            return i;
-        }
-    }
-    return -1;                  //ç™»å½•è´¦å·åœ¨usernameListä¸­ä¸å­˜åœ¨
+    QMovie * movie = new QMovie(":/images/IMG_7.gif");
+    ui->gifLabel->setMovie(movie);
+    movie->start();
 }
 
-void MainWindow::paintEvent(QPaintEvent *)
+void MainWindow::keyPressEvent(QKeyEvent * event)
 {
-    QPainter painter(this);
-    QPixmap pix;
-    pix.load(":/images/IMG_3.jpeg");
-    painter.drawPixmap(0,0,this->width(),this->height(),pix);
+    switch(event->key())
+    {
+    case Qt::Key_Return:                          //»Ø³µ°´ÏÂ¼¤»îµÇÂ¼°´Å¥
+        emit ui->pushButton_login->clicked();
+        break;
+    }
+}
+
+void MainWindow::getImgAdd()
+{
+	// ¶ÁÍ·ÏñµØÖ·txtÎÄ±¾
+	ifstream ifs;
+	ifs.open("./userImgAdd.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		// Ã»ÓĞÎÄ¼şµÄÇé¿öÏÂÓÃÏÂÃæµÄÄ¬ÈÏÍ·Ïñ
+		qDebug() << "file doesn't exit";
+		userImg["1"] = ":/images/IMG_12.png";
+		userImg["ZYunfei"] = ":/images/IMG_11.png";
+		userImg["NBY"] = ":/images/IMG_13.png";
+	}
+	else
+	{
+		// ¼ÓÔØÎÄ¼şÖĞÍ·ÏñµØÖ·
+		string name;
+		string address;
+		while (ifs >> name && ifs >> address)
+		{
+			userImg[name] = address;
+		}
+	}
 }

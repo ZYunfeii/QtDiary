@@ -2,6 +2,7 @@
 #define EDITWINDOW_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
 
 namespace Ui {
 class EditWindow;
@@ -16,6 +17,7 @@ public:
     ~EditWindow();
 
     void paintEvent(QPaintEvent *);
+	void keyPressEvent(QKeyEvent *);     //重写回车，当回车按下时激活保存按钮信号
 
     QString diary;          //日记文本
     QFont font;             //字体记录

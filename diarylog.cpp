@@ -1,17 +1,19 @@
-#include "diarylog.h"
+﻿#include "diarylog.h"
 #include "ui_diarylog.h"
 #include <QDebug>
+#include <QPropertyAnimation>
 
-DiaryLog::DiaryLog(QString diary,QString time,QString pointSize,QString family,QString userName,QWidget *parent) :
+DiaryLog::DiaryLog(QString diary,QString time,QString pointSize,QString family,QString userName,
+	               map<string,string>m,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DiaryLog)
 {
     ui->setupUi(this);
+	this->proLabel = ui->portraitLabel;
 
     //加载头像
-    int index = getUserIndex(userName);
     QPixmap tmpPix;
-    tmpPix.load(QString(":/images/IMG_1%1.png").arg(index + 1));
+    tmpPix.load(QString::fromStdString(m[userName.toStdString()]));
     ui->portraitLabel->setScaledContents(true);
     ui->portraitLabel->setPixmap(tmpPix);
 
@@ -36,13 +38,26 @@ DiaryLog::DiaryLog(QString diary,QString time,QString pointSize,QString family,Q
         emit this->deleteSignal();
         delete this;   //删除userwindow中的日记框
     });
+
+
+    //进入一条日记的详情
+    connect(ui->detailButton,&QPushButton::clicked,[=](){       
+        detailWindow = new DetailWindow(diary,time,pointSize,family);
+        detailWindow->show();
+        QPropertyAnimation *pPosAnimation3 = new QPropertyAnimation(detailWindow, "pos");     //添加动画
+        pPosAnimation3->setDuration(550);
+        pPosAnimation3->setStartValue(QPoint(parent->x(),parent->y()));
+        pPosAnimation3->setEndValue(QPoint(parent->x()+parent->width(),parent->y()));
+        pPosAnimation3->setEasingCurve(QEasingCurve::InOutQuad);
+        pPosAnimation3->start();
+    });
 }
 void DiaryLog::databaseInit(QString str)
 {
     int i;
-    if(str == "1") {i = 0;}
-    if(str == "张云飞") {i = 1;}
-    if(str == "Lily") {i = 2;}
+    if(str == "ZYunfei") {i = 0;}
+    if(str == "1") {i = 1;}
+    if(str == "NBY") {i = 2;}
     db = QSqlDatabase::addDatabase("QSQLITE", QString("myDiary%1").arg(i));
     db.setDatabaseName(QString(".//qtDb%1.db").arg(i));
     if( !db.open())         //这个db.open相当关键啊！没这一步后面写数据可失败。
@@ -53,15 +68,6 @@ void DiaryLog::databaseInit(QString str)
     {
         qDebug()<<"数据库连接成功";
     }
-}
-
-int DiaryLog::getUserIndex(QString str)
-{
-    int i;
-    if(str == "1") {i = 0;}
-    if(str == "张云飞") {i = 1;}
-    if(str == "Lily") {i = 2;}
-    return i;
 }
 
 DiaryLog::~DiaryLog()

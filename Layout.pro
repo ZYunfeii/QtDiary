@@ -7,9 +7,11 @@
 QT       += core gui\
             sql
 
+RC_FILE = exe_ico.rc
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Layout
+TARGET = MyDiary
 TEMPLATE = app
 
 
@@ -17,17 +19,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     userwindow.cpp \
     editwindow.cpp \
-    diarylog.cpp
+    diarylog.cpp \
+    detailwindow.cpp \
+    timelistwindow.cpp
 
 HEADERS  += mainwindow.h \
     userwindow.h \
     editwindow.h \
-    diarylog.h
+    diarylog.h \
+    detailwindow.h \
+    timelistwindow.h
 
 FORMS    += mainwindow.ui \
     userwindow.ui \
     editwindow.ui \
-    diarylog.ui
+    diarylog.ui \
+    detailwindow.ui \
+    timelistwindow.ui
 
 CONFIG += C++11
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'editwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.0
+** Created by: Qt User Interface Compiler version 5.12.10
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,12 @@
 #define UI_EDITWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFontComboBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -47,28 +46,29 @@ public:
     void setupUi(QMainWindow *EditWindow)
     {
         if (EditWindow->objectName().isEmpty())
-            EditWindow->setObjectName(QStringLiteral("EditWindow"));
+            EditWindow->setObjectName(QString::fromUtf8("EditWindow"));
         EditWindow->resize(600, 400);
-        EditWindow->setMinimumSize(QSize(600, 400));
+        EditWindow->setMinimumSize(QSize(0, 0));
         EditWindow->setMaximumSize(QSize(600, 400));
         actionBack = new QAction(EditWindow);
-        actionBack->setObjectName(QStringLiteral("actionBack"));
+        actionBack->setObjectName(QString::fromUtf8("actionBack"));
         centralwidget = new QWidget(EditWindow);
-        centralwidget->setObjectName(QStringLiteral("centralwidget"));
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
+        widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         fontComboBox = new QFontComboBox(widget);
-        fontComboBox->setObjectName(QStringLiteral("fontComboBox"));
-        fontComboBox->setCurrentIndex(237);
+        fontComboBox->setObjectName(QString::fromUtf8("fontComboBox"));
+        fontComboBox->setEditable(false);
+        fontComboBox->setCurrentIndex(234);
 
         horizontalLayout->addWidget(fontComboBox);
 
         label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
+        label->setObjectName(QString::fromUtf8("label"));
         label->setMinimumSize(QSize(30, 30));
         label->setMaximumSize(QSize(30, 30));
         label->setPixmap(QPixmap(QString::fromUtf8(":/images/IMG_6.png")));
@@ -77,16 +77,25 @@ public:
         horizontalLayout->addWidget(label);
 
         comboBox = new QComboBox(widget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
         horizontalLayout->addWidget(comboBox);
 
         saveButton = new QToolButton(widget);
-        saveButton->setObjectName(QStringLiteral("saveButton"));
+        saveButton->setObjectName(QString::fromUtf8("saveButton"));
         saveButton->setMinimumSize(QSize(30, 30));
         saveButton->setMaximumSize(QSize(30, 30));
         QIcon icon;
-        icon.addFile(QStringLiteral(":/images/IMG_4.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/images/IMG_4.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         saveButton->setIcon(icon);
 
         horizontalLayout->addWidget(saveButton);
@@ -95,16 +104,16 @@ public:
         verticalLayout->addWidget(widget);
 
         textEdit = new QTextEdit(centralwidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
 
         verticalLayout->addWidget(textEdit);
 
         EditWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(EditWindow);
-        menubar->setObjectName(QStringLiteral("menubar"));
+        menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 600, 26));
         menu = new QMenu(menubar);
-        menu->setObjectName(QStringLiteral("menu"));
+        menu->setObjectName(QString::fromUtf8("menu"));
         EditWindow->setMenuBar(menubar);
 
         menubar->addAction(menu->menuAction());
@@ -120,23 +129,22 @@ public:
 
     void retranslateUi(QMainWindow *EditWindow)
     {
-        EditWindow->setWindowTitle(QApplication::translate("EditWindow", "\346\227\245\350\256\260\347\274\226\350\276\221", 0));
-        actionBack->setText(QApplication::translate("EditWindow", "\350\277\224\345\233\236\344\270\212\344\270\200\347\272\247", 0));
-        fontComboBox->setCurrentText(QApplication::translate("EditWindow", "\345\215\216\346\226\207\350\241\214\346\245\267", 0));
+        EditWindow->setWindowTitle(QApplication::translate("EditWindow", "\346\227\245\350\256\260\347\274\226\350\276\221", nullptr));
+        actionBack->setText(QApplication::translate("EditWindow", "\350\277\224\345\233\236\344\270\212\344\270\200\347\272\247", nullptr));
+        fontComboBox->setCurrentText(QApplication::translate("EditWindow", "\345\215\216\346\226\207\346\245\267\344\275\223", nullptr));
         label->setText(QString());
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
-         << QApplication::translate("EditWindow", "5", 0)
-         << QApplication::translate("EditWindow", "6", 0)
-         << QApplication::translate("EditWindow", "7", 0)
-         << QApplication::translate("EditWindow", "8", 0)
-         << QApplication::translate("EditWindow", "9", 0)
-         << QApplication::translate("EditWindow", "10", 0)
-         << QApplication::translate("EditWindow", "11", 0)
-         << QApplication::translate("EditWindow", "12", 0)
-        );
-        saveButton->setText(QApplication::translate("EditWindow", "...", 0));
-        menu->setTitle(QApplication::translate("EditWindow", "\345\274\200\345\247\213", 0));
+        comboBox->setItemText(0, QApplication::translate("EditWindow", "6", nullptr));
+        comboBox->setItemText(1, QApplication::translate("EditWindow", "7", nullptr));
+        comboBox->setItemText(2, QApplication::translate("EditWindow", "8", nullptr));
+        comboBox->setItemText(3, QApplication::translate("EditWindow", "9", nullptr));
+        comboBox->setItemText(4, QApplication::translate("EditWindow", "10", nullptr));
+        comboBox->setItemText(5, QApplication::translate("EditWindow", "11", nullptr));
+        comboBox->setItemText(6, QApplication::translate("EditWindow", "12", nullptr));
+        comboBox->setItemText(7, QApplication::translate("EditWindow", "13", nullptr));
+        comboBox->setItemText(8, QApplication::translate("EditWindow", "14", nullptr));
+
+        saveButton->setText(QApplication::translate("EditWindow", "...", nullptr));
+        menu->setTitle(QApplication::translate("EditWindow", "\345\274\200\345\247\213", nullptr));
     } // retranslateUi
 
 };

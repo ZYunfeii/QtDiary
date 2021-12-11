@@ -4,9 +4,13 @@ INPUT(
 ./debug\userwindow.o
 ./debug\editwindow.o
 ./debug\diarylog.o
+./debug\detailwindow.o
+./debug\timelistwindow.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
 ./debug\moc_userwindow.o
 ./debug\moc_editwindow.o
 ./debug\moc_diarylog.o
+./debug\moc_detailwindow.o
+./debug\moc_timelistwindow.o
 );

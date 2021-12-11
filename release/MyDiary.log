@@ -1,0 +1,29 @@
+﻿  Generate moc_predefs.h
+  MOC detailwindow.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file detailwindow.h
+  MOC diarylog.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file diarylog.h
+  MOC editwindow.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file editwindow.h
+  MOC mainwindow.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file mainwindow.h
+  MOC timelistwindow.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file timelistwindow.h
+  MOC userwindow.h
+CUSTOMBUILD : warning : Failed to resolve include "F:/FilesofPractice/QTpractice/SomeProjectsofMyself/MyDiary_vs/release/moc_predefs.h" for moc file userwindow.h
+  moc_detailwindow.cpp
+  moc_diarylog.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  moc_editwindow.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\editwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  moc_mainwindow.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  moc_timelistwindow.cpp
+  moc_userwindow.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  userwindow.cpp
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\mainwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\filesofpractice\qtpractice\someprojectsofmyself\mydiary_vs\editwindow.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  正在生成代码...
+  MyDiary.vcxproj -> E:\FilesofPractice\QTpractice\SomeProjectsofMyself\MyDiary_vs\release\MyDiary.exe

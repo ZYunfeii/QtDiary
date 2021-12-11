@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'editwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.10)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,12 +12,14 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'editwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.0. It"
+#error "This file was generated using the moc from 5.12.10. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_EditWindow_t {
     QByteArrayData data[3];
     char stringdata0[23];
@@ -41,7 +43,7 @@ QT_MOC_LITERAL(2, 22, 0) // ""
 static const uint qt_meta_data_EditWindow[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -63,7 +65,7 @@ static const uint qt_meta_data_EditWindow[] = {
 void EditWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        EditWindow *_t = static_cast<EditWindow *>(_o);
+        auto *_t = static_cast<EditWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->saveSignal(); break;
@@ -71,21 +73,25 @@ void EditWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (EditWindow::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&EditWindow::saveSignal)) {
+            using _t = void (EditWindow::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&EditWindow::saveSignal)) {
                 *result = 0;
+                return;
             }
         }
     }
     Q_UNUSED(_a);
 }
 
-const QMetaObject EditWindow::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_EditWindow.data,
-      qt_meta_data_EditWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
-};
+QT_INIT_METAOBJECT const QMetaObject EditWindow::staticMetaObject = { {
+    &QMainWindow::staticMetaObject,
+    qt_meta_stringdata_EditWindow.data,
+    qt_meta_data_EditWindow,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *EditWindow::metaObject() const
@@ -95,9 +101,9 @@ const QMetaObject *EditWindow::metaObject() const
 
 void *EditWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_EditWindow.stringdata0))
-        return static_cast<void*>(const_cast< EditWindow*>(this));
+        return static_cast<void*>(this);
     return QMainWindow::qt_metacast(_clname);
 }
 
@@ -121,6 +127,7 @@ int EditWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void EditWindow::saveSignal()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

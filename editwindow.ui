@@ -12,8 +12,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>400</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -32,11 +32,14 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QFontComboBox" name="fontComboBox">
+         <property name="editable">
+          <bool>false</bool>
+         </property>
          <property name="currentText">
-          <string>华文行楷</string>
+          <string>华文楷体</string>
          </property>
          <property name="currentIndex">
-          <number>237</number>
+          <number>234</number>
          </property>
         </widget>
        </item>
@@ -72,11 +75,6 @@
          </property>
          <item>
           <property name="text">
-           <string>5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
            <string>6</string>
           </property>
          </item>
@@ -108,6 +106,16 @@
          <item>
           <property name="text">
            <string>12</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>13</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>14</string>
           </property>
          </item>
         </widget>

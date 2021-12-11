@@ -2,13 +2,16 @@
 #include "ui_userwindow.h"
 #include "editwindow.h"
 #include "diarylog.h"
+#include "timelistwindow.h"
 #include <QDebug>
 #include <QPainter>
 #include <QDateTime>
-#include <QFile>
 #include <QGridLayout>
-
-
+#include <QPropertyAnimation>
+#include <QFileDialog>
+#include <qmessagebox.h>
+#include <map>
+//extern map<string, string> userImg;
 UserWindow::UserWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::UserWindow)
@@ -16,41 +19,46 @@ UserWindow::UserWindow(QWidget *parent) :
 
 }
 
-UserWindow::UserWindow(QString str):ui(new Ui::UserWindow)
+UserWindow::UserWindow(QString str,class MainWindow* w):ui(new Ui::UserWindow)
 {
     ui->setupUi(this);
+	this->userName = str;
 
-    //åˆå§‹åŒ–å·¦ä¸Šè§’å¤´åƒä¿¡æ¯
-    int index = getUserIndex(str);
+    //³õÊ¼»¯×óÉÏ½ÇÍ·ÏñĞÅÏ¢
     QPixmap tmpPix;
-    tmpPix.load(QString(":/images/IMG_1%1.png").arg(index + 1));
+    tmpPix.load(QString::fromStdString(w->userImg[str.toStdString()]));
     ui->userLabel->setScaledContents(true);
     ui->userLabel->setPixmap(tmpPix);
 
-    //åˆå§‹åŒ–é¡¶éƒ¨æ—¥æœŸæ—¶é—´
+	// °²×°ÊÂ¼ş¹ıÂËÆ÷
+	ui->userLabel->installEventFilter(this);
+
+
+    //³õÊ¼»¯¶¥²¿ÈÕÆÚÊ±¼ä
     QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd");
-    ui->timeLabel->setText(QString("ä»Šå¤©æ˜¯%1").arg(time));
+    ui->timeLabel->setText(QString::fromLocal8Bit("½ñÌìÊÇ%1").arg(time));
 
 
-    //èœå•é€€å‡ºé€‰é¡¹
+    //²Ëµ¥ÍË³öÑ¡Ïî
     connect(ui->actionOutApp,&QAction::triggered,[=](){this->close();});
 
-    //èœå•è¿”å›ç™»å½•ç•Œé¢é€‰é¡¹
+    //²Ëµ¥·µ»ØµÇÂ¼½çÃæÑ¡Ïî
     connect(ui->actionBackLog,&QAction::triggered,[=](){
        emit this->ChooseBackSignal();
     });
 
-    //åˆå§‹åŒ–layout
-    ui->textEditStart->setText("ç‚¹å‡»å³ä¸Šè§’æ–°å»ºæŒ‰é’®ï¼Œå¼€å§‹æ‚¨çš„ç¬¬ä¸€ç¯‡æ—¥è®°å§ï¼");
-    QVBoxLayout * playout = new QVBoxLayout;     //QScrollAreaçš„layout
+    //³õÊ¼»¯layout
+    ui->textEditStart->setText(QString::fromLocal8Bit("µã»÷ÓÒÉÏ½ÇĞÂ½¨°´Å¥£¬¿ªÊ¼ÄúµÄµÚÒ»ÆªÈÕ¼Ç°É£¡"));
+    QVBoxLayout * playout = new QVBoxLayout;     //QScrollAreaµÄlayout
     playout->setDirection(QBoxLayout::BottomToTop);
+	
 
 
-    //ç•Œé¢åç§°
-    QString windowName = QString(str.toUtf8()) + QString("çš„æ—¥è®°").toUtf8();
+    //½çÃæÃû³Æ
+    QString windowName = QString::fromLocal8Bit(str.toUtf8()) + QString::fromLocal8Bit("µÄÈÕ¼Ç").toUtf8();
     this->setWindowTitle(windowName);
 
-    //é“¾æ¥æ•°æ®åº“ åŠ è½½æ—¥è®°å†å²ä¿¡æ¯ä»¥diarylogå½¢å¼å‘ˆç°
+    //Á´½ÓÊı¾İ¿â ¼ÓÔØÈÕ¼ÇÀúÊ·ĞÅÏ¢ÒÔdiarylogĞÎÊ½³ÊÏÖ
     databaseInit(str);
     QSqlQuery query(db);
     query.exec("select * from person");
@@ -62,54 +70,79 @@ UserWindow::UserWindow(QString str):ui(new Ui::UserWindow)
         QString fontFamily = query.value(2).toString();
         if(diary != "")
         {
-            DiaryLog * diaryLog = new DiaryLog(diary,time,fontPointSize,fontFamily,str,this);
+            DiaryLog * diaryLog = new DiaryLog(diary,time,fontPointSize,fontFamily,str,w->userImg,this);
+			this->diarylogList.push_back(diaryLog);
             playout->addWidget(diaryLog);
             ui->scrollArea->widget()->setLayout(playout);
 
-            //ç›‘å¬åˆ é™¤ä¿¡å·
+            //¼àÌıÉ¾³ıĞÅºÅ
             connect(diaryLog,&DiaryLog::deleteSignal,[=](){
                 numberOfRows -= 1;
                 ui->diaryNumLabel->clear();
-                ui->diaryNumLabel->setText(QString("æ‚¨å·²ç´¯è®¡å†™ä¸‹äº†%1ç¯‡æ—¥è®°").arg(numberOfRows));
+                ui->diaryNumLabel->setText(QString::fromLocal8Bit("ÄúÒÑÀÛ¼ÆĞ´ÏÂÁË%1ÆªÈÕ¼Ç").arg(numberOfRows));
             });
         }
     }
 
-    //åˆå§‹åŒ–æ—¥è®°æ•°é‡å¹¶æ˜¾ç¤ºåœ¨é¡¶éƒ¨
+
+    //ÈÕÆÚ¼ÇÂ¼°´Å¥Á´½ÓÈÕÆÚlist
+    connect(ui->timeListButon,&QPushButton::clicked,[=](){
+        TimeListWindow * timeListWindow = new TimeListWindow(str,this);
+        timeListWindow->show();
+        QPropertyAnimation *pPosAnimation1 = new QPropertyAnimation(timeListWindow, "pos");     //Ìí¼Ó¶¯»­
+        pPosAnimation1->setDuration(550);
+        pPosAnimation1->setStartValue(QPoint(this->x(),this->y()+this->height()-timeListWindow->height()));
+        pPosAnimation1->setEndValue(QPoint(this->x()-timeListWindow->width(),this->y()+this->height()-timeListWindow->height()));
+        pPosAnimation1->setEasingCurve(QEasingCurve::InOutQuad);
+        pPosAnimation1->start();
+    });
+
+    //³õÊ¼»¯ÈÕ¼ÇÊıÁ¿²¢ÏÔÊ¾ÔÚ¶¥²¿
     query.first();
     query.previous();
     if(query.last())
     {
         numberOfRows =  query.at() + 1;
     }
-    ui->diaryNumLabel->setText(QString("æ‚¨å·²ç´¯è®¡å†™ä¸‹äº†%1ç¯‡æ—¥è®°").arg(numberOfRows));
+    ui->diaryNumLabel->setText(QString::fromLocal8Bit("ÄúÒÑÀÛ¼ÆĞ´ÏÂÁË%1ÆªÈÕ¼Ç").arg(numberOfRows));
 
 
 
-    //ç‚¹å‡»æ–°å»ºæ‰“å¼€ç¼–è¾‘çª—å£
+    //µã»÷ĞÂ½¨´ò¿ª±à¼­´°¿Ú
     connect(ui->newFileButton,&QToolButton::clicked,[=](){
         EditWindow * editWindow = new EditWindow(this);
         editWindow->show();
+        QPropertyAnimation *pPosAnimation2 = new QPropertyAnimation(editWindow, "pos");     //Ìí¼Ó¶¯»­
+        pPosAnimation2->setDuration(550);
+        pPosAnimation2->setStartValue(QPoint(this->x()-100,this->y()));
+        pPosAnimation2->setEndValue(QPoint(this->x()-100,this->y()+200));
+        pPosAnimation2->setEasingCurve(QEasingCurve::InOutQuad);
+        pPosAnimation2->start();
 
-        //ç›‘å¬ç¼–è¾‘çª—å£ä¿å­˜ä¿¡å·
+
+
+        //¼àÌı±à¼­´°¿Ú±£´æĞÅºÅ
         connect(editWindow,&EditWindow::saveSignal,[=](){
-            QString diary = editWindow->diary;             //å–åˆ°æ—¥è®°å†…å®¹
-            QString fontFamily = editWindow->font.family();       //æ—¥è®°çš„å­—ä½“é£æ ¼
-            QString fontPointSize = QString::number(editWindow->font.pointSize());   //æ—¥è®°çš„å­—ä½“å¤§å°
+            QString diary = editWindow->diary;             //È¡µ½ÈÕ¼ÇÄÚÈİ
+            QString fontFamily = editWindow->font.family();       //ÈÕ¼ÇµÄ×ÖÌå·ç¸ñ
+            QString fontPointSize = QString::number(editWindow->font.pointSize());   //ÈÕ¼ÇµÄ×ÖÌå´óĞ¡
 
             editWindow->close();
 
-            //è·å–å½“å‰æ—¶é—´
+            //»ñÈ¡µ±Ç°Ê±¼ä
             QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
 
-            //æ·»åŠ æ—¥è®°widget
-            DiaryLog * diaryLog = new DiaryLog(diary,time,fontPointSize,fontFamily,str,this);
+            //Ìí¼ÓÈÕ¼Çwidget
+			w->getImgAdd();
+            DiaryLog * diaryLog = new DiaryLog(diary,time,fontPointSize,fontFamily,str,w->userImg,this);
             playout->addWidget(diaryLog);
+			this->diarylogList.push_back(diaryLog);
             ui->scrollArea->widget()->setLayout(playout);
 
 
 
-            //åˆ©ç”¨æ•°æ®åº“ä¿å­˜æ—¶é—´ã€æ—¥è®°å†…å®¹ã€å­—ä½“ã€å­—å·
+            //ÀûÓÃÊı¾İ¿â±£´æÊ±¼ä¡¢ÈÕ¼ÇÄÚÈİ¡¢×ÖÌå¡¢×ÖºÅ
+            databaseInit(str);
             QSqlQuery query(db);
             query.prepare("INSERT INTO person (time, diary,family,pointSize)"
                           "VALUES (:time, :diary, :family, :pointSize)");
@@ -117,18 +150,19 @@ UserWindow::UserWindow(QString str):ui(new Ui::UserWindow)
             query.bindValue(":diary",diary);
             query.bindValue(":family",fontFamily);
             query.bindValue(":pointSize",fontPointSize);
-            query.exec();
+            bool flag = query.exec();
+            qDebug()<<flag;
 
-            //æ›´æ–°é¡¶éƒ¨æ—¥è®°æ•°é‡æ˜¾ç¤º
+            //¸üĞÂ¶¥²¿ÈÕ¼ÇÊıÁ¿ÏÔÊ¾
             numberOfRows += 1;
             ui->diaryNumLabel->clear();
-            ui->diaryNumLabel->setText(QString("æ‚¨å·²ç´¯è®¡å†™ä¸‹äº†%1ç¯‡æ—¥è®°").arg(numberOfRows));
+            ui->diaryNumLabel->setText(QString::fromLocal8Bit("ÄúÒÑÀÛ¼ÆĞ´ÏÂÁË%1ÆªÈÕ¼Ç").arg(numberOfRows));
 
-            //ç›‘å¬åˆ é™¤ä¿¡å·
+            //¼àÌıÉ¾³ıĞÅºÅ
             connect(diaryLog,&DiaryLog::deleteSignal,[=](){
                 numberOfRows -= 1;
                 ui->diaryNumLabel->clear();
-                ui->diaryNumLabel->setText(QString("æ‚¨å·²ç´¯è®¡å†™ä¸‹äº†%1ç¯‡æ—¥è®°").arg(numberOfRows));
+                ui->diaryNumLabel->setText(QString::fromLocal8Bit("ÄúÒÑÀÛ¼ÆĞ´ÏÂÁË%1ÆªÈÕ¼Ç").arg(numberOfRows));
             });
         });
 
@@ -147,34 +181,82 @@ void UserWindow::paintEvent(QPaintEvent *)
 void UserWindow::databaseInit(QString str)
 {
     int i;
-    if(str == "1") {i = 0;}
-    if(str == "å¼ äº‘é£") {i = 1;}
-    if(str == "Lily") {i = 2;}
+    if(str == "ZYunfei") {i = 0;}
+    if(str == "1") {i = 1;}
+    if(str == "NBY") {i = 2;}
     db = QSqlDatabase::addDatabase("QSQLITE", QString("myDiary%1").arg(i));
     db.setDatabaseName(QString(".//qtDb%1.db").arg(i));
-    if( !db.open())         //è¿™ä¸ªdb.openç›¸å½“å…³é”®å•Šï¼æ²¡è¿™ä¸€æ­¥åé¢å†™æ•°æ®å¯å¤±è´¥ã€‚
+    if( !db.open())         //Õâ¸ödb.openÏàµ±¹Ø¼ü°¡£¡Ã»ÕâÒ»²½ºóÃæĞ´Êı¾İ¿ÉÊ§°Ü¡£
     {
-        qDebug() << "æ— æ³•å»ºç«‹æ•°æ®åº“è¿æ¥";
+        qDebug() << "ÎŞ·¨½¨Á¢Êı¾İ¿âÁ¬½Ó";
     }
     else
     {
-        qDebug()<<"æ•°æ®åº“è¿æ¥æˆåŠŸ";
+        qDebug()<<"Êı¾İ¿âÁ¬½Ó³É¹¦";
     }
 }
 
-int UserWindow::getUserIndex(QString str)
+// »»Í·Ïñ
+bool UserWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    int i;
-    if(str == "1") {i = 0;}
-    if(str == "å¼ äº‘é£") {i = 1;}
-    if(str == "Lily") {i = 2;}
-    return i;
+	// Ö»Ö§³ÖÓ¢ÎÄÃû³ÆµÄÍ¼Æ¬
+	if (qobject_cast<QLabel*>(obj) == ui->userLabel && event->type() == QEvent::MouseButtonRelease)
+	{
+		QString path = QFileDialog::getOpenFileName(this, "open the file", "C:\\Users\\lenovo\\Desktop");
+		if (path == "") return true; // ÖĞÍ¾ÍË³öÑ¡ÔñÍ¼Æ¬²Ù×÷£¬Ö±½Óreturnµô
+		QString strAll;
+		QStringList strList;
+		QFile readFile("userImgAdd.txt");
+		if (readFile.open((QIODevice::ReadOnly | QIODevice::Text)))
+		{
+			QTextStream stream(&readFile);
+			strAll = stream.readAll();
+		}
+		readFile.close();
+		QFile writeFile("userImgAdd.txt");
+		if (writeFile.open(QIODevice::WriteOnly | QIODevice::Text))
+		{
+			QTextStream stream(&writeFile);
+			strList = strAll.split("\n");
+			for (int i = 0; i < strList.count(); i++)
+			{
+				QStringList tempList = strList.at(i).split(" ");
+				if (tempList.at(0) == this->userName)
+				{
+					QString tempStr = this->userName + " " + path;
+					stream << tempStr << "\n";
+				}
+				else if (i == strList.count() - 1)
+				{
+					stream << strList.at(i);
+				}
+				else
+				{
+					stream << strList.at(i) << "\n";
+				}
+			}
+		}
+		writeFile.close();
+		// ÖØÖÃdiarylogµÄÍ·Ïñ
+		QPixmap tmpPix;
+		tmpPix.load(path);
+		for (vector<class DiaryLog*>::iterator it = diarylogList.begin(); it < diarylogList.end(); it++)
+		{
+			(*it)->proLabel->setScaledContents(true);
+			(*it)->proLabel->setPixmap(tmpPix);
+		}
+		
+		// ÖØÖÃ×óÉÏ½ÇÈËÎïÍ·Ïñ
+		ui->userLabel->setScaledContents(true);
+		ui->userLabel->setPixmap(tmpPix);
+		return true;
+	}
+	return false;
 }
-
 
 UserWindow::~UserWindow()
 {
-    qDebug()<<"è°ƒç”¨userWindowææ„";
+    qDebug()<<"µ÷ÓÃuserWindowÎö¹¹";
     delete ui;
 }
 
